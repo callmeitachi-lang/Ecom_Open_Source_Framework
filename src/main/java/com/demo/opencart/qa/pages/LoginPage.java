@@ -11,7 +11,7 @@ import com.demo.opencart.qa.base.BasePage;
 public class LoginPage extends BasePage {
 	// Step 1--Creating By locators
 
-	private WebDriver driver;
+private WebDriver driver;
 
 	private By ForgotPasswordLink = By.linkText("Forgotten Password");
 	private By UserName = By.id("input-email");

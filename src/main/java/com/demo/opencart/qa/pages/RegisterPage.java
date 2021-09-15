@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import com.demo.opencart.qa.base.BasePage;
 
 public class RegisterPage extends BasePage {
+	private WebDriver driver;
 
 	private By RegisterPageHeader = By.cssSelector("#content h1");
 	private By firstname = By.id("input-firstname");

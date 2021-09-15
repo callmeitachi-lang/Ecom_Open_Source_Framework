@@ -2,10 +2,13 @@ package com.demo.opencart.qa.test;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
 import com.demo.opencart.qa.constants.Constants;
+import com.demo.opencart.qa.listeners.ExtentReportListener;
+@Listeners(ExtentReportListener.class)
 
 public class AddtoCartPageTest extends basetest {
 

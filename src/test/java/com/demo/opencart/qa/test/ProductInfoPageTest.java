@@ -4,9 +4,12 @@ import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
+import com.demo.opencart.qa.listeners.ExtentReportListener;
+@Listeners(ExtentReportListener.class)
 
 public class ProductInfoPageTest extends basetest {
 

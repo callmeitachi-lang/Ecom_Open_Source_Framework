@@ -10,8 +10,8 @@ import org.openqa.selenium.WebElement;
 import com.demo.opencart.qa.base.BasePage;
 
 public class AccountsPage extends BasePage {
-
 	private WebDriver driver;
+
 
 	// Creating By locators
 	private By AccountsPageHeader = By.linkText("Your Store");

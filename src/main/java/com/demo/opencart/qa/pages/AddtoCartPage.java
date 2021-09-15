@@ -12,8 +12,8 @@ import com.demo.opencart.qa.base.BasePage;
 public class AddtoCartPage extends BasePage {
 	private WebDriver driver;
 
-	private By CartDetails = By.xpath(
-			"//a[contains(text(),'MacBook Pro')]//ancestor::div[@id='content']//thead//..//tbody//td");
+	private By CartDetails = By
+			.xpath("//a[contains(text(),'MacBook Pro')]//ancestor::div[@id='content']//thead//..//tbody//td");
 
 	private By shippingTax = By.xpath("(//i[@class='fa fa-caret-down'])[3]");
 	private By selectCountry = By.xpath("//select[@id='input-country']//option");
@@ -84,10 +84,10 @@ public class AddtoCartPage extends BasePage {
 	public boolean cartTotal() {
 		String TotalCartAmount = driver.findElement(Cart_total).getText();
 		String Shopping_Cart_amount = driver.findElement(ShoppingCart_Total).getText();
-System.out.println(TotalCartAmount);
-System.out.println(Shopping_Cart_amount);
+		System.out.println(TotalCartAmount);
+		System.out.println(Shopping_Cart_amount);
 
-if (TotalCartAmount.trim() == Shopping_Cart_amount.trim()) {
+		if (TotalCartAmount.trim().equals(Shopping_Cart_amount.trim())) {
 			return true;
 		}
 		return false;

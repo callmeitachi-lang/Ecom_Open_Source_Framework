@@ -12,9 +12,9 @@ import org.openqa.selenium.WebElement;
 import com.demo.opencart.qa.base.BasePage;
 
 public class Productinfopage extends BasePage {
+	private WebDriver driver;
 
 	// By
-	private WebDriver driver;
 	private By ProductNameHeader = By.cssSelector("#content h1");
 	private By ProductMetaDeta = By.cssSelector("#content  .list-unstyled:nth-of-type(1) li");
 	private By ProductPrice = By.cssSelector("#content  .list-unstyled:nth-of-type(2) li");

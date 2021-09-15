@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
 import com.demo.opencart.qa.constants.Constants;
+import com.demo.opencart.qa.listeners.ExtentReportListener;
 
+@Listeners(ExtentReportListener.class)
 public class AccountsPageTest extends basetest {
 
 	@BeforeClass
-
-	public void AccountsPageSetup() {
-
-		accountspage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+	public void AccountsPageSetup() {		
+		accountspage=loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		 //loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 
-	
 	}
 
 	@Test(priority = 1)

@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
 import com.demo.opencart.qa.constants.Constants;
+import com.demo.opencart.qa.pages.AccountsPage;
 
 public class loginPageTest extends basetest {
 
@@ -22,9 +23,8 @@ public class loginPageTest extends basetest {
 
 	@Test(priority = 2)
 	public void dologinTest() {
-		loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
-		
 
+	 accountspage=loginpage.doLogin(prop.getProperty("username"),prop.getProperty("password"));
 	}
 
 	// @Test(priority = 3)

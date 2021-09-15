@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import com.demo.opencart.qa.pages.AccountsPage;
 import com.demo.opencart.qa.pages.AddtoCartPage;
@@ -14,31 +15,38 @@ import com.demo.opencart.qa.pages.RegisterPage;
 
 public class basetest {
 
-	BasePage basepage;
-	public Properties prop;
-	WebDriver driver;
+
+	public BasePage basepage;
+
 	public LoginPage loginpage;
-	public RegisterPage registerpage;
 	public AccountsPage accountspage;
+	public RegisterPage registerpage;
 	public Productinfopage productinfopage;
 	public AddtoCartPage addtocartpage;
+	public Properties prop;
+	public WebDriver driver;
 
-
-	 @BeforeTest
-	public void setup() {
+	@Parameters("browser")
+	@BeforeTest
+	public void setup(String browsername) {
 		basepage = new BasePage();
-		prop=new Properties();
+		prop = new Properties();
 		prop = basepage.init_prop();
 		String browser = prop.getProperty("browser");
+		if (browsername != null) {
+			browser = browsername;
+		}
+
 		driver = basepage.init_driver(browser);
 		driver.get(prop.getProperty("url"));
+
 		loginpage = new LoginPage(driver);
-		//accountspage=new AccountsPage(driver);
-	 }
+
+	}
 
 	@AfterTest
-	
+
 	public void teardown() {
-		//driver.quit();
+		driver.quit();
 	}
 }
