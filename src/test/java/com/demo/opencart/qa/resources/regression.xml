@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Open SourceEcomm TestNGTesting Regression suite">
-	<listeners>
+	<!-- <listeners>
 		<listener
 			class-name="com.demo.opencart.qa.listeners.ExtentReportListener" />
-	</listeners>
+	</listeners> -->
 	<test name="MyRegression test--LoginPage" parallel="tests"
 		thread-count="2">
 		<parameter name="browser" value="Chrome" />

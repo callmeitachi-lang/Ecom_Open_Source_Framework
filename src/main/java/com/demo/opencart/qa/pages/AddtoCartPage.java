@@ -8,10 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.demo.opencart.qa.base.BasePage;
+import com.demo.opencart.qa.utils.ElementUtil;
 
 public class AddtoCartPage extends BasePage {
 	private WebDriver driver;
-
+	private ElementUtil eutil;
 	private By CartDetails = By
 			.xpath("//a[contains(text(),'MacBook Pro')]//ancestor::div[@id='content']//thead//..//tbody//td");
 
@@ -27,11 +28,14 @@ public class AddtoCartPage extends BasePage {
 
 	public AddtoCartPage(WebDriver driver) {
 		this.driver = driver;
+		eutil = new ElementUtil(driver);
+
 	}
 
 	public boolean shoppingCartDetails() {
 		List<String> list = new ArrayList<String>();
-		List<WebElement> CartList = driver.findElements(CartDetails);
+
+		List<WebElement> CartList = eutil.getElements(CartDetails);
 
 		for (WebElement e : CartList) {
 
@@ -46,15 +50,15 @@ public class AddtoCartPage extends BasePage {
 	}
 
 	public void EstimatedshippingDetails() {
-		driver.findElement(shippingTax).click();
-		List<WebElement> countryList = driver.findElements(selectCountry);
+		eutil.doClick(shippingTax);
+		List<WebElement> countryList=eutil.getElements(selectCountry);
 		for (WebElement e : countryList) {
 			if (e.getText().equalsIgnoreCase("India")) {
 				e.click();
 
 			}
 		}
-		List<WebElement> stateList = driver.findElements(RegionorState);
+		List<WebElement> stateList =eutil.getElements(RegionorState);
 		for (WebElement e1 : stateList) {
 			if (e1.getText().equalsIgnoreCase("Andhra Pradesh")) {
 				e1.click();
@@ -63,18 +67,18 @@ public class AddtoCartPage extends BasePage {
 
 		// Select select1=new Select(driver.findElement(RegionorState));
 		// select1.selectByValue("1476");
-		driver.findElement(GetQuote).click();
+		eutil.doClick(GetQuote);
 	}
 
 	public void preferredShippingMethod() {
-		driver.findElement(FlatRate).click();
-		driver.findElement(ApplyShipping).click();
+		eutil.doClick(FlatRate);
+		eutil.doClick(ApplyShipping);
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		driver.findElement(CheckOut).click();
+		eutil.doClick(CheckOut);
 	}
 
 	public String addtoCartPageTitle() {
@@ -82,8 +86,8 @@ public class AddtoCartPage extends BasePage {
 	}
 
 	public boolean cartTotal() {
-		String TotalCartAmount = driver.findElement(Cart_total).getText();
-		String Shopping_Cart_amount = driver.findElement(ShoppingCart_Total).getText();
+		String TotalCartAmount = eutil.doGetText(Cart_total);
+		String Shopping_Cart_amount = eutil.doGetText(ShoppingCart_Total);
 		System.out.println(TotalCartAmount);
 		System.out.println(Shopping_Cart_amount);
 

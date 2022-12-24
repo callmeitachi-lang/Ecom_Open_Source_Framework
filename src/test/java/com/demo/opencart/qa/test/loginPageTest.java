@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
 import com.demo.opencart.qa.constants.Constants;
-import com.demo.opencart.qa.pages.AccountsPage;
 
 public class loginPageTest extends basetest {
 
@@ -14,11 +13,11 @@ public class loginPageTest extends basetest {
 		Assert.assertTrue(loginpage.forgotpasswordLink());
 	}
 
-	@Test(priority = 0)
+	@Test(priority = -1)
 	public void homepagetitleTest() {
-		String Tittle = loginpage.LoginPageTittle();
-		Assert.assertEquals(Tittle, Constants.LoginPage_Title);
 
+		String title=loginpage.LoginPageTittle();
+		Assert.assertEquals(title,Constants.lOGINPAGE_TITLE);
 	}
 
 	@Test(priority = 2)

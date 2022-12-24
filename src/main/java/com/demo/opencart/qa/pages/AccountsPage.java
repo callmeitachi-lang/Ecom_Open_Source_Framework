@@ -8,10 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.demo.opencart.qa.base.BasePage;
+import com.demo.opencart.qa.utils.ElementUtil;
 
 public class AccountsPage extends BasePage {
 	private WebDriver driver;
-
+	ElementUtil eutil;       
 
 	// Creating By locators
 	private By AccountsPageHeader = By.linkText("Your Store");
@@ -24,18 +25,21 @@ public class AccountsPage extends BasePage {
 
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
+		eutil=new ElementUtil(driver);
 	}
 
 	// Creating Page Actions
 
 	public String getAccountsPageTittle() {
+		
 
 		return driver.getTitle();
 
 	}
 
 	public boolean getAccountsPageHeader() {
-		return driver.findElement(AccountsPageHeader).isDisplayed();
+		
+		return eutil.doIsDisplayed(AccountsPageHeader);
 	}
 
 	public List<String> getPageHeaders() {
@@ -51,9 +55,11 @@ public class AccountsPage extends BasePage {
 	
 	public boolean searchBoxItemCount(String productname)
 	{
-		driver.findElement(SearchBox).sendKeys(productname);
-		driver.findElement(SearchButtn).click();
-		if(driver.findElements(ItemCount).size()>0)
+		eutil.getElement(SearchBox).sendKeys(productname);
+         eutil.doClick(SearchButtn);
+         eutil.getElement(SearchBox).clear();
+		if(
+eutil.getElements(ItemCount).size()>0)
 		{
 			return true;
 		}
@@ -62,7 +68,7 @@ public class AccountsPage extends BasePage {
 	
 	public Productinfopage SelectProductFromSearchedItem(String productname)
 	{
-		List<WebElement> SearchedProduct=driver.findElements(SearchfromProductName);
+		List<WebElement> SearchedProduct=eutil.getElements(SearchfromProductName);
 	for(WebElement e:SearchedProduct)
 	       if(e.getText().equals(productname))
 	       {

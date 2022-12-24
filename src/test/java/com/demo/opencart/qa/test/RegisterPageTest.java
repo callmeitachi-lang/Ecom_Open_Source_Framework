@@ -29,13 +29,24 @@ public class RegisterPageTest extends basetest {
 		Assert.assertTrue(registerpage.registerPageHeader());
 	}
 
+	//Delta Approach---->Its allways better to use hard coded value using in data provider rather than using in excel
+	// ex: u just need to delete 2-3 users after registering them , than maintaining 50-60 plus data and getting them deleted later
 	@DataProvider
 	public Object[][] getRegisterData() {
 		Object[][] data = excelutil.getTestData("registration");
 		return data;
 	}
 
-	@Test(priority = 3, dataProvider = "getRegisterData")
+	@DataProvider
+	public Object[][] fillData()
+	{
+		return new Object[][]{{"kanwar","singh","helllo@gmail.com","7843929847","googly@123","yes"},
+			
+			{"gk","singh","helllooo@gmail.com","7843929847","googly@123","yes"}};
+	}
+	
+	
+	@Test(priority = 3, dataProvider = "fillData")
 	public void accountCreationTest(String firstname, String lastname, String email, String telephone, String password,
 			String Subscribe) {
 

@@ -1,4 +1,4 @@
-package com.demo.opencart.qa.base;
+	package com.demo.opencart.qa.base;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +26,7 @@ public class BasePage {
 
 	public WebDriver driver;
 	public Properties prop;
-
+	public static String highlight;
 	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<WebDriver>();
 
 	/**
@@ -35,8 +35,12 @@ public class BasePage {
 	 * @param browsername
 	 * @return
 	 */
-	public WebDriver init_driver(String browsername) {
+	public WebDriver init_driver(Properties prop) {
+
+		String browsername = prop.getProperty("browser");
 		System.out.println("The browser value is " + browsername);
+
+		highlight = prop.getProperty("highlight");
 
 		if (browsername.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -77,7 +81,6 @@ public class BasePage {
 		if (browsername.equals("chrome")) {
 			DesiredCapabilities cap = DesiredCapabilities.chrome();
 			cap.setBrowserName("chrome");
-
 			try {
 				tldriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), cap));
 			} catch (MalformedURLException e) {
@@ -111,20 +114,36 @@ public class BasePage {
 
 	public Properties init_prop() {
 
+		FileInputStream ip = null;
+		String envname = System.getProperty("env"); // running at runtime --dev/qa/stage
+
 		prop = new Properties();
 		try {
-			FileInputStream ip = new FileInputStream(
-					"./src/main/java/com/demo/opencart/qa/properties/config.properties");
-			try {
-				prop.load(ip);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			if (envname == null) {
+				System.out.println("Running on prod envirnment");
+				ip = new FileInputStream("./src/main/java/com/demo/opencart/qa/properties/config.properties");
+			} else {
+				switch (envname.toLowerCase()) {
+				case "qa":
+					ip = new FileInputStream("./src/main/java/com/demo/opencart/qa/properties/qa.config.properties");
+					break;
+				case "stage":
+					ip = new FileInputStream("./src/main/java/com/demo/opencart/qa/properties/stage.config.properties");
+					break;
 
+				default:
+					System.out.println("Please check the environment......");
+					break;
+				}
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		try {
+			prop.load(ip);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return prop;
 
 	}

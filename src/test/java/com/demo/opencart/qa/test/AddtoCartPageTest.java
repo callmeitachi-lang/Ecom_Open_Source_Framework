@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
 import com.demo.opencart.qa.constants.Constants;
-import com.demo.opencart.qa.listeners.ExtentReportListener;
-@Listeners(ExtentReportListener.class)
+
+//@Listeners(ExtentReportListener.class)
 
 public class AddtoCartPageTest extends basetest {
 

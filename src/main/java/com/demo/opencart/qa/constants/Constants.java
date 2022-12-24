@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Constants {
 	
-	public final static String LoginPage_Title="Account Login";
+	public final static String lOGINPAGE_TITLE="Account Login";
 	public final static String EmptyCart_PopUp="Your shopping cart is empty!";
-	public final static String AccountsPage_Title="My Account";
+	public final static String ACCOUNTSPAGE_TITLE="My Account";
 	public final static String ShoppingCart_Title="Shopping Cart";
 	public final static String Register_Account_Title="Register Account";
 

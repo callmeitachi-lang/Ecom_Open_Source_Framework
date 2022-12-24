@@ -15,7 +15,6 @@ import com.demo.opencart.qa.pages.RegisterPage;
 
 public class basetest {
 
-
 	public BasePage basepage;
 
 	public LoginPage loginpage;
@@ -28,20 +27,20 @@ public class basetest {
 
 	@Parameters("browser")
 	@BeforeTest
-	public void setup(String browsername) {
+	public void setup() {
 		basepage = new BasePage();
 		prop = new Properties();
 		prop = basepage.init_prop();
-		String browser = prop.getProperty("browser");
-		if (browsername != null) {
+		/*if (browsername != null) {
 			browser = browsername;
-		}
+		}*/
 
-		driver = basepage.init_driver(browser);
+		driver = basepage.init_driver(prop);
 		driver.get(prop.getProperty("url"));
 
 		loginpage = new LoginPage(driver);
-
+           
+		
 	}
 
 	@AfterTest

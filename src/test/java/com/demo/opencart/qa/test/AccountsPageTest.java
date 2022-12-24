@@ -4,27 +4,28 @@ import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.demo.opencart.qa.base.basetest;
 import com.demo.opencart.qa.constants.Constants;
-import com.demo.opencart.qa.listeners.ExtentReportListener;
 
-@Listeners(ExtentReportListener.class)
+//@Listeners(ExtentReportListener.class)
 public class AccountsPageTest extends basetest {
 
 	@BeforeClass
-	public void AccountsPageSetup() {		
-		accountspage=loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
-		 //loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+	public void AccountsPageSetup() {
+		accountspage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		// loginpage.doLogin(prop.getProperty("username"),
+		// prop.getProperty("password"));
 
 	}
 
 	@Test(priority = 1)
 	public void accountPagetitleTest() {
 		String title = accountspage.getAccountsPageTittle();
-		Assert.assertEquals(title, Constants.AccountsPage_Title);
+		Assert.assertEquals(title, Constants.ACCOUNTSPAGE_TITLE);
 
 	}
 
@@ -40,10 +41,18 @@ public class AccountsPageTest extends basetest {
 
 	}
 
-	@Test(priority = 4)
-	public void searchItemTest() {
+	@DataProvider
+	public Object[][] getData()
 
-		Assert.assertTrue(accountspage.searchBoxItemCount("IMAC"));
+	{
+		return new Object[][] { { "Macbook" }, { "IMAC" }, { "Apple" } };
+	}
+
+	@Test(priority = 4, dataProvider = "getData")
+
+	public void searchItemTest(String productName) {
+
+		Assert.assertTrue(accountspage.searchBoxItemCount(productName));
 	}
 
 }
