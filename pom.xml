@@ -93,7 +93,7 @@
 					<reuseForks>true</reuseForks>
 					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
 					<suiteXmlFiles>
-						<suiteXmlFile>Regressiontestng.xml</suiteXmlFile>
+						<suiteXmlFile>C:\Users\knwrp\eclipse-workspace\Ecommerce_Framework\src\test\java\com\demo\opencart\qa\resources\regression.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
