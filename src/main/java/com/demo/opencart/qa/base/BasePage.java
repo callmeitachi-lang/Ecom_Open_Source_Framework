@@ -20,6 +20,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BasePage {
@@ -35,13 +37,17 @@ public class BasePage {
 	 * @param browsername
 	 * @return
 	 */
+	
+	
+	
+	
 	public WebDriver init_driver(Properties prop) {
 
 		String browsername = prop.getProperty("browser");
 		System.out.println("The browser value is " + browsername);
 
 		highlight = prop.getProperty("highlight");
-
+	
 		if (browsername.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 
