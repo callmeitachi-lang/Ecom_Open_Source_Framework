@@ -1,5 +1,6 @@
 package com.demo.opencart.qa.base;
 
+
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,9 @@ public class basetest {
 	@Parameters("browser")
 	@BeforeTest
 	public void setup() {
+		//Method method=new Method();
+		//System.out.println("The current running class is "+method.getClass());
+		System.out.println("The running thread is::=> "+Thread.currentThread().getId());
 		basepage = new BasePage();
 		prop = new Properties();
 		prop = basepage.init_prop();
