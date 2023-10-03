@@ -52,14 +52,14 @@ public class BasePage {
 			WebDriverManager.chromedriver().setup();
 
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remotedriver("chrome");
+				//init_remotedriver("chrome");
 			} else {
 				tldriver.set(new ChromeDriver());
 			}
 		} else if (browsername.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remotedriver("firefox");
+				//init_remotedriver("firefox");
 			} else {
 
 				tldriver.set(new FirefoxDriver());
@@ -81,7 +81,7 @@ public class BasePage {
 
 	}
 
-	private void init_remotedriver(String browsername) {
+	/**private void init_remotedriver(String browsername) {
 		System.out.println("Test start in at remote side");
 
 		if (browsername.equals("chrome")) {
@@ -103,7 +103,7 @@ public class BasePage {
 				e.printStackTrace();
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * getDriver using ThreadLocal

@@ -10,6 +10,9 @@ public class loginPageTest extends basetest {
 
 	@Test(priority = 1)
 	public void forgotpasswordlinkTest() {
+		
+		//C:\Users\{your-username}\.cache\selenium
+		// download chromedriver.exe in the above mentioned path
 		Assert.assertTrue(loginpage.forgotpasswordLink());
 	}
 

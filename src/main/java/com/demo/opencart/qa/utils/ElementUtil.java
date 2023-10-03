@@ -1,5 +1,6 @@
 package com.demo.opencart.qa.utils;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -286,7 +287,7 @@ public class ElementUtil {
 
 	/***************************** Wait Utils **************************/
 	public WebElement doPresenceOfElementLocated(By locator, int timeOut) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 
 	}
